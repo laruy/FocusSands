@@ -23,3 +23,8 @@ Aplicativo com funcionalidade de auxiliar na organização de tarefas do dia a d
   - Um “relatório” que irá mostrar um calendário informando quais dias o usuário teve tasks/focos no mês e a listagem das tasks ao selecionar determinado dia.
 
 [LINK DO PROTÓTIPO NO FIGMA](https://www.figma.com/file/hQFLe0ZITPFOKW8XjU687z/FocusSands?type=design&node-id=0%3A1&mode=design&t=YfT7HMi8NDHULfGC-1)
+
+---
+
+### Utilitários:
+- [React Native Calendars](https://wix.github.io/react-native-calendars/docs/Intro)
