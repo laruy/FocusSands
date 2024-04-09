@@ -2,7 +2,7 @@ import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 
 interface InputProps {
-  placeholder: string;
+  placeholder?: string;
 }
 const InputComponent: React.FC<InputProps> = ({ placeholder }) => {
   return (

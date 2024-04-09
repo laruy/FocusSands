@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native';
 import { Link } from 'expo-router';
 import InputComponent from '../../components/InputComponent/index';
@@ -10,9 +11,10 @@ import {
   ContentBody,
   Title,
   Description,
-} from './styles';
+} from '../login/styles';
 
 export default function Login() {
+  const router = useRouter();
   return (
     <SafeAreaView>
       <Container>
@@ -23,21 +25,24 @@ export default function Login() {
 
         <ContentBody>
           <Description>Login</Description>
-          <InputComponent></InputComponent>
+          <InputComponent placeholder=""></InputComponent>
 
           <Description>Senha</Description>
-          <InputComponent></InputComponent>
+          <InputComponent placeholder=""></InputComponent>
 
-          <ButtonComponent title="Entrar"></ButtonComponent>
+          <ButtonComponent
+            onPress={() => router.push({ pathname: '/(tabs)' })}
+            title="Entrar"
+          />
         </ContentBody>
 
         {/* Link para a tela de registro */}
         <Link href="/register">
           <Description
             style={{
-              textDecorationLine: 'underline',
               color: '#ffffff',
               fontSize: 17,
+              textDecorationLine: 'underline',
             }}
           >
             Não tem uma conta? Crie uma agora!

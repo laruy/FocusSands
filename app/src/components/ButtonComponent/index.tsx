@@ -6,17 +6,9 @@ interface ButtonProps {
   onPress?: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ onPress, title }) => {
-  return (
-    <TouchableOpacity onPress={onPress} style={styles.button}>
-      <Text style={styles.buttonText}>{title}</Text>
-    </TouchableOpacity>
-  );
-};
-
 const styles = StyleSheet.create({
   button: {
-    width: '90%',
+    width: '100%',
     height: 52,
     backgroundColor: '#014BA0',
     color: '#FFFFFF',
@@ -26,7 +18,6 @@ const styles = StyleSheet.create({
     borderColor: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 20,
   },
   buttonText: {
     color: 'white',
@@ -35,4 +26,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Button;
+export default function ButtonComponent({ onPress, title }: ButtonProps) {
+  return (
+    <TouchableOpacity onPress={onPress} style={styles.button}>
+      <Text style={styles.buttonText}>{title}</Text>
+    </TouchableOpacity>
+  );
+}

@@ -11,7 +11,7 @@ export function LayoutPage({ children }: Props) {
         alignItems: 'center',
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: '#030e24',
+        backgroundColor: '#041548',
         padding: 16,
       }}
     >

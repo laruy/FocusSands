@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import InputComponent from '../../components/InputComponent/index';
 import ButtonComponent from '../../components/ButtonComponent/index';
 import ImageComponent from '../../components/LogoComponent';
@@ -14,6 +14,7 @@ import {
 } from '../login/styles';
 
 export default function Register() {
+  const router = useRouter();
   return (
     <SafeAreaView>
       <Container>
@@ -31,7 +32,8 @@ export default function Register() {
           <Description>Confirmar senha</Description>
           <InputComponent></InputComponent>
 
-          <ButtonComponent title="Cadastrar"></ButtonComponent>
+          <ButtonComponent title="Cadastrar" onPress={() => router.back()} />
+
           {/* Link para a tela de registro */}
           <Link href="/login">
             <Description style={{ textDecorationLine: 'underline' }}>

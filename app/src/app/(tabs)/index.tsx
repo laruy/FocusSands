@@ -3,7 +3,7 @@ import Button from '../../components/ButtonComponent';
 import { TextInputMask } from 'react-native-masked-text';
 import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, Text } from 'react-native';
-import { Container } from '../pages/login/styles';
+import { LayoutPage } from '../../components/global/Layout';
 
 const Index = () => {
   const [title, setTitle] = useState('');
@@ -18,7 +18,7 @@ const Index = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <LayoutPage>
       <InputComponent
         placeholder="No que está trabalhando?"
         value={title}
@@ -32,7 +32,7 @@ const Index = () => {
         onChangeText={setDescription}
       />
       <View style={styles.timeContainer}>
-        <Text>Tempo</Text>
+        <Text style={{ color: '#FFF' }}>Tempo</Text>
         <TextInputMask
           style={styles.timeInput}
           placeholder="00:00"
@@ -43,20 +43,14 @@ const Index = () => {
           value={time}
           onChangeText={setTime}
         />
-        <Text>Minutos</Text>
+        <Text style={{ color: '#FFF' }}>Minutos</Text>
       </View>
       <Button title="Adicionar Tarefa" onPress={handleSave} />
-    </View>
+    </LayoutPage>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   descriptionInput: {
     width: '90%',
     height: 150,

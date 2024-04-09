@@ -1,8 +1,9 @@
 import styled from 'styled-components/native';
+import { BG_DEFAULT } from '../../shared/colors';
 
 export const Container = styled.View`
   padding: 10px;
-  background-color: #030e24;
+  background-color: ${BG_DEFAULT};
   padding-top: 70px;
   height: 100%;
 `;

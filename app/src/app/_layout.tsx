@@ -1,14 +1,17 @@
 import { Stack } from 'expo-router/stack';
 import { Header } from '../components/Header';
+import { BG_DEFAULT } from '../shared/colors';
+import { StatusBar } from 'expo-status-bar';
 
 export default function AppLayout() {
   return (
     <>
+      <StatusBar style="light" />
       <Header />
       <Stack
         screenOptions={(prop) => ({
           headerStyle: {
-            backgroundColor: '#030e24',
+            backgroundColor: BG_DEFAULT,
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
