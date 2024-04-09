@@ -26,12 +26,12 @@ export default function Login() {
 
         <ContentBody>
           <Description>Login</Description>
-          <InputComponent></InputComponent>
+          <InputComponent placeholder=""></InputComponent>
 
           <Description>Senha</Description>
-          <InputComponent></InputComponent>
+          <InputComponent placeholder=""></InputComponent>
 
-          <ButtonComponent title='Entrar'></ButtonComponent>
+          <ButtonComponent onPress={() => navigation.navigate('/(tabs)')} title='Entrar'></ButtonComponent>
         </ContentBody>
 
         {/* <Link href={'/(tabs)'} style={{ color: '#ffffff',  fontSize: 17}}>Não tem uma conta?</Link> */}

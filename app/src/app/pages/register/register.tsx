@@ -25,15 +25,15 @@ export default function Register() {
           </ContentHeader>
           <ContentBody>
             <Description>Login</Description>
-            <InputComponent></InputComponent>
+            <InputComponent placeholder=""></InputComponent>
 
             <Description>Senha</Description>
-            <InputComponent></InputComponent>
+            <InputComponent placeholder=""></InputComponent>
 
             <Description>Confirmar senha</Description>
-            <InputComponent></InputComponent>
+            <InputComponent placeholder=""></InputComponent>
 
-            <ButtonComponent title='Cadastrar'></ButtonComponent>
+            <ButtonComponent onPress={()=> navigation.navigate('(tabs)')}title='Cadastrar'></ButtonComponent>
             {/* Link para a tela de registro */}
             <TouchableOpacity onPress={() => navigation.navigate('pages/login/login')}>
               <Description style={{ textDecorationLine: 'underline' }}>Já possui uma conta?</Description>

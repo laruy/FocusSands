@@ -1,5 +1,5 @@
 import { Text } from 'react-native';
-import { Container, Wrap } from './styles';
+import { Container, Wrap, Wrap2 } from './styles';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 export function Focused() {
@@ -11,10 +11,10 @@ export function Focused() {
         <FontAwesome size={26} color="#014BA0" name="play" />
       </Wrap>
 
-      <Wrap>
+      <Wrap2>
         <Text style={{ fontSize: 22 }}>Tarefa 2</Text>
         <Text style={{ fontSize: 26 }}>00:00</Text>
-      </Wrap>
+      </Wrap2>
     </Container>
   );
 }

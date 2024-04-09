@@ -4,9 +4,10 @@ import { Header } from '../components/Header';
 export default function AppLayout() {
   return (
     <>
-      <Header />
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ header: ()=> <Header /> }} />
+        {/* <Stack.Screen name="pages/login/login" options={{ headerShown: false }} />
+        <Stack.Screen name="pages/register/register" options={{ headerShown: false }} /> */}
       </Stack>
     </>
   );
