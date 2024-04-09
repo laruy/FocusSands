@@ -1,4 +1,5 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 
 export default function TabLayout() {
@@ -10,21 +11,21 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="task"
         options={{
-          title: 'Explicação',
+          title: 'Tarefas',
           tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="question-circle" color={color} />
+            <FontAwesome5 name="tasks" size={24} color={color} />
           ),
         }}
       />
 
       <Tabs.Screen
-        name="task"
+        name="index"
         options={{
-          title: 'Lista',
+          title: 'Adicionar Tarefa',
           tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="list" color={color} />
+            <MaterialIcons name="format-list-bulleted-add" size={24} color="black" />
           ),
         }}
       />
