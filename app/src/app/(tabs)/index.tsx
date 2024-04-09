@@ -1,31 +1,91 @@
-import { Text } from 'react-native';
-import { LayoutPage } from '../../components/global/Layout';
+import InputComponent from '../../components/InputComponent';
+import Button from '../../components/ButtonComponent';
+import { TextInputMask } from 'react-native-masked-text';
+import React, { useState } from 'react';
+import { View, TextInput, StyleSheet, Text } from 'react-native';
+import { Container } from '../pages/login/styles';
 
-export default function Explication() {
+const Index = () => {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [time, setTime] = useState('');
+
+  const handleSave = () => {
+    // Logic to save data goes here
+    console.log('Title:', title);
+    console.log('Description:', description);
+    console.log('Time:', time);
+  };
+
   return (
-    <LayoutPage>
-      <Text
-        style={{
-          color: '#FFF',
-          fontSize: 24,
-          fontWeight: '700',
-          marginBottom: 10,
-        }}
-      >
-        O que é o FocusSands?
-      </Text>
-      <Text style={{ color: '#FFF', lineHeight: 22 }}>
-        Ao utilizar o Focussands, os usuários são guiados por ciclos de trabalho
-        e descanso cuidadosamente estruturados, que equilibram períodos
-        concentrados de atividade com pausas revitalizantes.
-      </Text>
-      <Text style={{ color: '#FFF', lineHeight: 22 }}>
-        A interface intuitiva e as funcionalidades flexíveis permitem adaptar o
-        aplicativo às suas necessidades individuais, seja você um estudante
-        enfrentando uma maratona de estudos, um profissional buscando melhorar
-        sua produtividade no trabalho, ou qualquer pessoa em busca de um método
-        eficaz para gerenciar seu tempo.
-      </Text>
-    </LayoutPage>
+    <View style={styles.container}>
+      <InputComponent
+        placeholder="No que está trabalhando?"
+        value={title}
+        onChangeText={setTitle}
+      />
+      <TextInput
+        style={styles.descriptionInput}
+        placeholder="Descrição"
+        multiline
+        value={description}
+        onChangeText={setDescription}
+      />
+      <View style={styles.timeContainer}>
+        <Text>Tempo</Text>
+        <TextInputMask
+          style={styles.timeInput}
+          placeholder="00:00"
+          type={'datetime'}
+          options={{
+            format: 'mm:ss',
+          }}
+          value={time}
+          onChangeText={setTime}
+        />
+        <Text>Minutos</Text>
+      </View>
+      <Button title="Adicionar Tarefa" onPress={handleSave} />
+    </View>
   );
-}
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  descriptionInput: {
+    width: '90%',
+    height: 150,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: '#83BDFF',
+    marginBottom: 20,
+    paddingHorizontal: 10,
+    paddingTop: 10,
+    backgroundColor: '#F0EBEB',
+    color: '#014BA0',
+  },
+  timeContainer: {
+    flexDirection: 'row', // Display items horizontally
+    justifyContent: 'space-between', // Create space between items
+    alignItems: 'center', // Center items vertically
+  },
+  timeInput: {
+    width: '30%',
+    height: 43,
+    padding: 10,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: '#83BDFF',
+    margin: 10,
+    backgroundColor: '#F0EBEB',
+    color: '#014BA0',
+    textAlign: 'center', // Center text horizontally
+  },
+});
+
+export default Index;

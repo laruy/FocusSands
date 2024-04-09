@@ -20,8 +20,10 @@ export default function AppLayout() {
       >
         <Stack.Screen
           name="(tabs)"
-          options={{ headerShown: false, title: '' }}
+          options={{ headerShown: false, title: '', header: () => <Header /> }}
         />
+        {/* <Stack.Screen name="pages/login/login" options={{ headerShown: false }} />
+        <Stack.Screen name="pages/register/register" options={{ headerShown: false }} /> */}
       </Stack>
     </>
   );

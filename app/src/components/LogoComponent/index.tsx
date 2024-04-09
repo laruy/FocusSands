@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 
-const MyImageComponent = () => {
+const ImageComponent = () => {
   return (
     <Image
       source={require('../../../assets/logo-img.png')} // Importa a imagem localmente
@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MyImageComponent;
+export default ImageComponent;

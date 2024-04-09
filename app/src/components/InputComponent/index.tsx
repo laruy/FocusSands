@@ -1,10 +1,13 @@
 import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 
-const InputComponent = () => {
+interface InputProps {
+  placeholder: string;
+}
+const InputComponent: React.FC<InputProps> = ({ placeholder }) => {
   return (
     <View style={styles.container}>
-      <TextInput style={styles.input} placeholder="..." />
+      <TextInput style={styles.input} placeholder={placeholder} />
     </View>
   );
 };
@@ -23,6 +26,7 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     fontSize: 16,
+    color: '#014BA0',
   },
 });
 
