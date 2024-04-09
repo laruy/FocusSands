@@ -5,8 +5,23 @@ export default function AppLayout() {
   return (
     <>
       <Header />
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack
+        screenOptions={(prop) => ({
+          headerStyle: {
+            backgroundColor: '#030e24',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          title: prop.route.name.split('/')[0].toLocaleUpperCase(),
+          animation: 'fade',
+        })}
+      >
+        <Stack.Screen
+          name="(tabs)"
+          options={{ headerShown: false, title: '' }}
+        />
       </Stack>
     </>
   );

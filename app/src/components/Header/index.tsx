@@ -1,14 +1,19 @@
-import { SafeAreaView, Text } from 'react-native';
+import { Image, SafeAreaView, Text } from 'react-native';
+import { Link } from 'expo-router';
 import { Container } from './styles';
 import { Avatar } from '../Avatar';
 
 export function Header() {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ backgroundColor: '#030e24' }}>
       <Container>
-        <Text style={{ fontSize: 24 }}>⏳</Text>
+        <Text style={{ fontSize: 24 }}>
+          <Image src="../../../assets/logo-img.png" />
+        </Text>
 
-        <Avatar name="Joao da Silva" />
+        <Link href="/profile">
+          <Avatar name="Joao da Silva" />
+        </Link>
       </Container>
     </SafeAreaView>
   );

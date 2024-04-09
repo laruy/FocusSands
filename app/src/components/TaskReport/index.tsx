@@ -7,7 +7,13 @@ interface Props {
 
 export function TaskReport({ name, time }: Props) {
   return (
-    <Text>
+    <Text
+      style={{
+        color: '#FFF',
+        fontSize: 16,
+        lineHeight: 22,
+      }}
+    >
       {name} - {time}
     </Text>
   );

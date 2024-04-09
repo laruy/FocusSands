@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: '#83BDFF',
     marginBottom: 10,
-    backgroundColor: '#F0EBEB'
+    backgroundColor: '#F0EBEB',
   },
   input: {
     flex: 1,

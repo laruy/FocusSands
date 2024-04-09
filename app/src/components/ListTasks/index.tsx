@@ -9,7 +9,7 @@ export function ListTasks() {
     <FlatList
       data={tasks}
       style={{ marginTop: 28 }}
-      contentContainerStyle={{ paddingHorizontal: 24, gap: 16 }}
+      contentContainerStyle={{ gap: 16 }}
       keyExtractor={(task) => task.id}
       renderItem={({ item: task }) => (
         <Task>

@@ -1,5 +1,4 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 
 export default function TabLayout() {
@@ -15,7 +14,7 @@ export default function TabLayout() {
         options={{
           title: 'Tarefas',
           tabBarIcon: ({ color }) => (
-            <FontAwesome5 name="tasks" size={24} color={color} />
+            <MaterialIcons name="checklist" size={24} color={color} />
           ),
         }}
       />
@@ -25,7 +24,11 @@ export default function TabLayout() {
         options={{
           title: 'Adicionar Tarefa',
           tabBarIcon: ({ color }) => (
-            <MaterialIcons name="format-list-bulleted-add" size={24} color="black" />
+            <MaterialIcons
+              name="format-list-bulleted-add"
+              size={28}
+              color={color}
+            />
           ),
         }}
       />
@@ -35,7 +38,7 @@ export default function TabLayout() {
         options={{
           title: 'Relatórios',
           tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="bar-chart" color={color} />
+            <MaterialIcons size={28} name="bar-chart" color={color} />
           ),
         }}
       />

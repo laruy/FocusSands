@@ -15,7 +15,7 @@ const Button: React.FC<ButtonProps> = ({ title }) => {
 
 const styles = StyleSheet.create({
   button: {
-    width:'90%',
+    width: '90%',
     height: 52,
     backgroundColor: '#014BA0',
     color: '#FFFFFF',
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     borderColor: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 20
+    margin: 20,
   },
   buttonText: {
     color: 'white',

@@ -1,19 +1,11 @@
-import { View } from 'react-native';
 import CalendarComponent from '../../components/Calendar';
 import { TaskReport } from '../../components/TaskReport';
 import tasks_report from '../../mocks/tasks-report.json';
+import { LayoutPage } from '../../components/global/Layout';
 
 export default function Report() {
   return (
-    <View
-      style={{
-        justifyContent: 'center',
-        alignItems: 'center',
-        flex: 1,
-        paddingVertical: 12,
-        gap: 16,
-      }}
-    >
+    <LayoutPage>
       <CalendarComponent />
 
       {tasks_report.map((task_report) => (
@@ -23,6 +15,6 @@ export default function Report() {
           key={task_report.id}
         />
       ))}
-    </View>
+    </LayoutPage>
   );
 }
