@@ -12,9 +12,17 @@ import {
   Title,
   Description,
 } from '../login/styles';
+import { useSession } from '../../shared/providers/ctx';
 
 export default function Login() {
   const router = useRouter();
+  const { signIn } = useSession();
+
+  function handleLogin() {
+    signIn();
+    router.push({ pathname: '/(tabs)' });
+  }
+
   return (
     <SafeAreaView>
       <Container>
@@ -30,10 +38,7 @@ export default function Login() {
           <Description>Senha</Description>
           <InputComponent placeholder=""></InputComponent>
 
-          <ButtonComponent
-            onPress={() => router.push({ pathname: '/(tabs)' })}
-            title="Entrar"
-          />
+          <ButtonComponent onPress={() => handleLogin()} title="Entrar" />
         </ContentBody>
 
         {/* Link para a tela de registro */}

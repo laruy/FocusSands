@@ -1,9 +1,9 @@
-import InputComponent from '../../components/InputComponent';
-import Button from '../../components/ButtonComponent';
+import InputComponent from '../../../components/InputComponent';
+import Button from '../../../components/ButtonComponent';
 import { TextInputMask } from 'react-native-masked-text';
 import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, Text } from 'react-native';
-import { LayoutPage } from '../../components/global/Layout';
+import { LayoutPage } from '../../../components/global/Layout';
 
 const Index = () => {
   const [title, setTitle] = useState('');

@@ -1,11 +1,14 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
+import { BG_DEFAULT } from '../../../shared/colors';
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: '#1E1E1E',
+        tabBarInactiveTintColor: '#FFFFFF',
+        tabBarInactiveBackgroundColor: BG_DEFAULT,
         headerShown: false,
       }}
     >
@@ -14,7 +17,7 @@ export default function TabLayout() {
         options={{
           title: 'Tarefas',
           tabBarIcon: ({ color }) => (
-            <MaterialIcons name="checklist" size={24} color={color} />
+            <MaterialIcons name="checklist" size={28} color={color} />
           ),
         }}
       />
