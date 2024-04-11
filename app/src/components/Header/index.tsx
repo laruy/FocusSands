@@ -1,19 +1,26 @@
-import { Image, SafeAreaView, Text } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import { Link } from 'expo-router';
 import { Container } from './styles';
-import { Avatar } from '../Avatar';
 import { BG_DEFAULT } from '../../shared/colors';
+import { Avatar } from 'react-native-paper';
 
 export function Header() {
+  const separarNome = 'João da Silva'.split(' ');
+  const primeiraLetra = separarNome[0].at(0)?.toUpperCase() || '';
   return (
     <SafeAreaView style={{ backgroundColor: BG_DEFAULT }}>
       <Container>
-        <Text style={{ fontSize: 24 }}>
-          <Image src="../../../assets/logo-img.png" />
-        </Text>
+        <Avatar.Image
+          style={{ backgroundColor: 'transparent' }}
+          source={require('../../../assets/logo-img.png')}
+        />
 
         <Link href="/profile">
-          <Avatar name="Joao da Silva" />
+          <Avatar.Text
+            size={64}
+            style={{ backgroundColor: '#000000' }}
+            label={primeiraLetra}
+          />
         </Link>
       </Container>
     </SafeAreaView>

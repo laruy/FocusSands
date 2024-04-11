@@ -1,5 +1,14 @@
 import styled from 'styled-components/native';
 
+export const Container = styled.View`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: space-between;
+`;
+
 export const Form = styled.View`
   width: 100%;
   display: flex;
@@ -8,7 +17,7 @@ export const Form = styled.View`
 `;
 
 export const ContainerFooter = styled.View`
-  padding-top: 32px;
+  padding-bottom: 32px;
   display: flex;
   align-items: flex-end;
   width: 100%;

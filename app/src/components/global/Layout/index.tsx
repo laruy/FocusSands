@@ -1,9 +1,11 @@
 import { PropsWithChildren } from 'react';
-import { View } from 'react-native';
+import { View, ViewStyle } from 'react-native';
 
-type Props = PropsWithChildren;
+type Props = PropsWithChildren & {
+  style?: ViewStyle;
+};
 
-export function LayoutPage({ children }: Props) {
+export function LayoutPage({ style, children }: Props) {
   return (
     <View
       style={{
@@ -13,6 +15,7 @@ export function LayoutPage({ children }: Props) {
         flexDirection: 'column',
         backgroundColor: '#041548',
         padding: 16,
+        ...style,
       }}
     >
       {children}

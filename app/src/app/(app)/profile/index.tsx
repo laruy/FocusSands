@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Button, TextInput } from 'react-native-paper';
+import { Button, TextInput, Card, Text } from 'react-native-paper';
+import { Link } from 'expo-router';
 import { LayoutPage } from '../../../components/global/Layout';
 import { useSession } from '../../../shared/providers/ctx';
-import { ContainerFooter, Form } from './styles';
+import { Container, ContainerFooter, Form } from './styles';
 
 export default function Profile() {
   const { signOut } = useSession();
@@ -21,44 +22,84 @@ export default function Profile() {
 
   return (
     <LayoutPage>
-      <Form>
-        <TextInput
-          label="Nome completo"
-          value={name}
-          onChangeText={(text) => setName(text)}
-        />
+      <Container>
+        <Form>
+          <TextInput
+            label="Nome completo"
+            value={name}
+            onChangeText={(text) => setName(text)}
+          />
 
-        <TextInput
-          label="Data de Nascimento"
-          value={dateNasc}
-          onChangeText={(text) => setDateNasc(text)}
-        />
+          <TextInput
+            label="Data de Nascimento"
+            value={dateNasc}
+            onChangeText={(text) => setDateNasc(text)}
+          />
 
-        <TextInput
-          label="Sexo"
-          value={sex}
-          onChangeText={(text) => setSex(text)}
-        />
+          <TextInput
+            label="Sexo"
+            value={sex}
+            onChangeText={(text) => setSex(text)}
+          />
 
-        <Button
-          icon="pencil"
-          mode="contained"
-          onPress={() => handleEditProfile()}
-        >
-          Editar
-        </Button>
-      </Form>
+          <Button
+            icon="pencil"
+            mode="contained"
+            onPress={() => handleEditProfile()}
+          >
+            Editar
+          </Button>
+        </Form>
 
-      <ContainerFooter>
-        <Button
-          icon="logout"
-          mode="text"
-          textColor="#FFF"
-          onPress={() => handleLogout()}
-        >
-          Sair da conta
-        </Button>
-      </ContainerFooter>
+        <Card>
+          <Card.Content>
+            <Text variant="bodyMedium">
+              Tempo de foco no mês:{' '}
+              <Text
+                variant="bodyLarge"
+                style={{ color: '#335882', fontWeight: '600', lineHeight: 26 }}
+              >
+                120 minutos
+              </Text>
+            </Text>
+
+            <Text variant="bodyMedium">
+              Mês de maior foco:{' '}
+              <Text
+                variant="bodyLarge"
+                style={{ color: '#335882', fontWeight: '600', lineHeight: 26 }}
+              >
+                março
+              </Text>
+            </Text>
+
+            <Text variant="bodyMedium">
+              Maior tempo de foco:{' '}
+              <Text
+                variant="bodyLarge"
+                style={{ color: '#335882', fontWeight: '600', lineHeight: 26 }}
+              >
+                30 minutos
+              </Text>
+            </Text>
+          </Card.Content>
+        </Card>
+
+        <ContainerFooter>
+          <Link href="/explication">
+            <Button mode="contained">O que é o FocusSands?</Button>
+          </Link>
+
+          <Button
+            icon="logout"
+            mode="text"
+            textColor="#FFF"
+            onPress={() => handleLogout()}
+          >
+            Sair da conta
+          </Button>
+        </ContainerFooter>
+      </Container>
     </LayoutPage>
   );
 }
