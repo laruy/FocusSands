@@ -11,7 +11,7 @@ export const Container = styled.View`
 export const ContentHeader = styled.View`
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 60px 0 0;
 `;
 
 export const ContentBody = styled.View`

@@ -3,13 +3,13 @@ import { Button, TextInput, Card, Text } from 'react-native-paper';
 import { Link } from 'expo-router';
 import { LayoutPage } from '../../../components/global/Layout';
 import { useSession } from '../../../shared/providers/ctx';
-import { Container, ContainerFooter, Form } from './styles';
+import { Container, ContainerFooter } from './styles';
+import { Form } from '../../../components/Form';
 
 export default function Profile() {
   const { signOut } = useSession();
 
   const [name, setName] = useState('');
-  const [dateNasc, setDateNasc] = useState('');
   const [sex, setSex] = useState('');
 
   function handleEditProfile() {
@@ -29,13 +29,6 @@ export default function Profile() {
             value={name}
             onChangeText={(text) => setName(text)}
           />
-
-          <TextInput
-            label="Data de Nascimento"
-            value={dateNasc}
-            onChangeText={(text) => setDateNasc(text)}
-          />
-
           <TextInput
             label="Sexo"
             value={sex}

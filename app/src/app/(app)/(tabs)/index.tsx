@@ -1,9 +1,9 @@
-import InputComponent from '../../../components/InputComponent';
-import Button from '../../../components/ButtonComponent';
+import { useState } from 'react';
+import { Button, Text, TextInput } from 'react-native-paper';
 import { TextInputMask } from 'react-native-masked-text';
-import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { LayoutPage } from '../../../components/global/Layout';
+import { Form } from '../../../components/Form';
 
 const Index = () => {
   const [title, setTitle] = useState('');
@@ -19,57 +19,61 @@ const Index = () => {
 
   return (
     <LayoutPage>
-      <InputComponent
-        placeholder="No que está trabalhando?"
-        value={title}
-        onChangeText={setTitle}
-      />
-      <TextInput
-        style={styles.descriptionInput}
-        placeholder="Descrição"
-        multiline
-        value={description}
-        onChangeText={setDescription}
-      />
+      <Form>
+        <TextInput
+          label="No que está trabalhando?"
+          value={title}
+          onChangeText={(text) => setTitle(text)}
+        />
+
+        <TextInput
+          label="Descrição"
+          value={description}
+          multiline
+          onChangeText={(text) => setDescription(text)}
+        />
+      </Form>
+
       <View style={styles.timeContainer}>
-        <Text style={{ color: '#FFF' }}>Tempo</Text>
+        <Text variant="labelLarge" style={{ color: '#FFF' }}>
+          Tempo:
+        </Text>
         <TextInputMask
           style={styles.timeInput}
           placeholder="00:00"
-          type={'datetime'}
+          type="datetime"
           options={{
             format: 'mm:ss',
           }}
           value={time}
-          onChangeText={setTime}
+          onChangeText={(text) => setTime(text)}
         />
-        <Text style={{ color: '#FFF' }}>Minutos</Text>
+        <Text variant="labelLarge" style={{ color: '#FFF' }}>
+          Minutos
+        </Text>
       </View>
-      <Button title="Adicionar Tarefa" onPress={handleSave} />
+
+      <View style={{ paddingTop: 22 }}>
+        <Button
+          icon="clock-plus-outline"
+          mode="contained"
+          onPress={() => handleSave()}
+        >
+          Adicionar Tarefa
+        </Button>
+      </View>
     </LayoutPage>
   );
 };
 
 const styles = StyleSheet.create({
-  descriptionInput: {
-    width: '90%',
-    height: 150,
-    borderWidth: 1,
-    borderRadius: 5,
-    borderColor: '#83BDFF',
-    marginBottom: 20,
-    paddingHorizontal: 10,
-    paddingTop: 10,
-    backgroundColor: '#F0EBEB',
-    color: '#014BA0',
-  },
   timeContainer: {
     flexDirection: 'row', // Display items horizontally
     justifyContent: 'space-between', // Create space between items
     alignItems: 'center', // Center items vertically
   },
   timeInput: {
-    width: '30%',
+    width: 80,
     height: 43,
     padding: 10,
     borderWidth: 1,

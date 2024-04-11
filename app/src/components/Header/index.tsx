@@ -18,7 +18,7 @@ export function Header() {
         <Link href="/profile">
           <Avatar.Text
             size={64}
-            style={{ backgroundColor: '#000000' }}
+            style={{ backgroundColor: '#FFF' }}
             label={primeiraLetra}
           />
         </Link>

@@ -1,53 +1,71 @@
-import React from 'react';
-import { SafeAreaView } from 'react-native';
+import React, { useState } from 'react';
 import { Link, useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import InputComponent from '../../components/InputComponent/index';
-import ButtonComponent from '../../components/ButtonComponent/index';
 import ImageComponent from '../../components/LogoComponent';
-import {
-  Container,
-  ContentHeader,
-  ContentBody,
-  ContentFooter,
-  Title,
-  Description,
-} from '../login/styles';
-import { BG_DEFAULT } from '../../shared/colors';
+import { ContentHeader, ContentFooter, Title } from '../login/styles';
+import { LayoutPageExternal } from '../../components/global/LayoutExternal';
+import { Button, TextInput } from 'react-native-paper';
+import { Form } from '../../components/Form';
 
 export default function Register() {
   const router = useRouter();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
   return (
-    <>
-      <StatusBar style="light" />
-      <SafeAreaView style={{ backgroundColor: BG_DEFAULT }}>
-        <Container>
-          <ContentHeader>
-            <ImageComponent></ImageComponent>
-            <Title>FocusSands</Title>
-          </ContentHeader>
-          <ContentBody>
-            <Description>Login</Description>
-            <InputComponent></InputComponent>
+    <LayoutPageExternal>
+      <ContentHeader>
+        <ImageComponent />
+        <Title>FocusSands</Title>
+      </ContentHeader>
 
-            <Description>Senha</Description>
-            <InputComponent></InputComponent>
+      <Form>
+        <TextInput
+          label="Nome"
+          value={name}
+          onChangeText={(text) => setName(text)}
+        />
 
-            <Description>Confirmar senha</Description>
-            <InputComponent></InputComponent>
+        <TextInput
+          label="E-mail"
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+        />
 
-            <ButtonComponent title="Cadastrar" onPress={() => router.back()} />
+        <TextInput
+          label="Senha"
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+        />
 
-            {/* Link para a tela de registro */}
-            <Link href="/login">
-              <Description style={{ textDecorationLine: 'underline' }}>
-                Já possui uma conta?
-              </Description>
-            </Link>
-          </ContentBody>
-          <ContentFooter></ContentFooter>
-        </Container>
-      </SafeAreaView>
-    </>
+        <TextInput
+          label="Confirmar Senha"
+          value={confirmPassword}
+          onChangeText={(text) => setConfirmPassword(text)}
+        />
+
+        <Button
+          icon="check"
+          mode="contained"
+          textColor="#FFF"
+          onPress={() => router.back()}
+        >
+          Cadastrar
+        </Button>
+      </Form>
+
+      <ContentFooter>
+        <Link href="/login" style={{ alignSelf: 'flex-end' }}>
+          <Button
+            mode="text"
+            textColor="#FFF"
+            labelStyle={{ textDecorationLine: 'underline' }}
+          >
+            Já possui uma conta?
+          </Button>
+        </Link>
+      </ContentFooter>
+    </LayoutPageExternal>
   );
 }
