@@ -14,7 +14,7 @@ const InputComponent: React.FC<InputProps> = ({ placeholder }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: '90%',
+    width: '100%',
     height: 43,
     padding: 10,
     borderWidth: 1,
