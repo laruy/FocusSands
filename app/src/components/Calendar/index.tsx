@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useState } from 'react';
 import { Calendar, CalendarUtils } from 'react-native-calendars';
+import { BG_DEFAULT } from '../../shared/colors';
 
 const INITIAL_DATE = '2022-07-06';
 
@@ -19,14 +20,14 @@ export default function CalendarComponent() {
   const marked = useMemo(() => {
     return {
       [getDate(-1)]: {
-        dotColor: 'red',
+        dotColor: '#ff0000',
         marked: true,
       },
       [selected]: {
         selected: true,
         disableTouchEvent: true,
-        selectedColor: 'orange',
-        selectedTextColor: 'red',
+        selectedColor: BG_DEFAULT,
+        selectedTextColor: '#FFF',
       },
     };
   }, [selected]);
