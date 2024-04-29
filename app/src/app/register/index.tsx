@@ -5,6 +5,7 @@ import { ContentHeader, ContentFooter, Title } from '../login/styles';
 import { LayoutPageExternal } from '../../components/global/LayoutExternal';
 import { Button, TextInput } from 'react-native-paper';
 import { Form } from '../../components/Form';
+import StyledButton from '../../components/Button';
 
 export default function Register() {
   const router = useRouter();
@@ -45,14 +46,12 @@ export default function Register() {
           onChangeText={(text) => setConfirmPassword(text)}
         />
 
-        <Button
+        <StyledButton
           icon="check"
-          mode="contained"
-          textColor="#FFF"
           onPress={() => router.back()}
         >
           Cadastrar
-        </Button>
+        </StyledButton>
       </Form>
 
       <ContentFooter>

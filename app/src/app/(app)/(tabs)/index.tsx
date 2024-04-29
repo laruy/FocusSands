@@ -4,6 +4,7 @@ import { TextInputMask } from 'react-native-masked-text';
 import { View, StyleSheet } from 'react-native';
 import { LayoutPage } from '../../../components/global/Layout';
 import { Form } from '../../../components/Form';
+import StyledButton from '../../../components/Button';
 
 const Index = () => {
   const [title, setTitle] = useState('');
@@ -54,13 +55,12 @@ const Index = () => {
       </View>
 
       <View style={{ paddingTop: 22 }}>
-        <Button
+        <StyledButton
           icon="clock-plus-outline"
-          mode="contained"
           onPress={() => handleSave()}
         >
           Adicionar Tarefa
-        </Button>
+        </StyledButton>
       </View>
     </LayoutPage>
   );

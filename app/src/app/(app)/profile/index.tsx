@@ -5,6 +5,7 @@ import { LayoutPage } from '../../../components/global/Layout';
 import { useSession } from '../../../shared/providers/ctx';
 import { Container, ContainerFooter } from './styles';
 import { Form } from '../../../components/Form';
+import StyledButton from '../../../components/Button';
 
 export default function Profile() {
   const { signOut } = useSession();
@@ -35,13 +36,12 @@ export default function Profile() {
             onChangeText={(text) => setSex(text)}
           />
 
-          <Button
+          <StyledButton
             icon="pencil"
-            mode="contained"
             onPress={() => handleEditProfile()}
           >
             Editar
-          </Button>
+          </StyledButton>
         </Form>
 
         <Card>
@@ -80,7 +80,7 @@ export default function Profile() {
 
         <ContainerFooter>
           <Link href="/explication">
-            <Button mode="contained">O que é o FocusSands?</Button>
+            <Button mode="contained" style={{ backgroundColor: '#014BA0' }}>O que é o FocusSands?</Button>
           </Link>
 
           <Button
