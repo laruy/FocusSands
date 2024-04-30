@@ -7,6 +7,7 @@ import { useSession } from '../../shared/providers/ctx';
 import { LayoutPageExternal } from '../../components/global/LayoutExternal';
 import { Form } from '../../components/Form';
 import { Button, TextInput } from 'react-native-paper';
+import StyledButton from '../../components/Button';
 
 export default function Login() {
   const router = useRouter();
@@ -40,14 +41,12 @@ export default function Login() {
           onChangeText={(text) => setPassword(text)}
         />
 
-        <Button
+        <StyledButton
           icon="login"
-          mode="contained"
-          textColor="#FFF"
           onPress={() => handleLogin()}
         >
           Entrar
-        </Button>
+        </StyledButton>
       </Form>
 
       <ContentFooter>
