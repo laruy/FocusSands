@@ -9,11 +9,13 @@ import {
   ParseUUIDPipe,
   HttpCode,
   HttpStatus,
+  Query,
 } from '@nestjs/common';
 import { TasksService } from './services/tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { ActiveUserId } from 'src/shared/decorators/ActiveUserId';
+import { OptionalParseDatePipe } from 'src/shared/pipes/OptionalParseDatePipe';
 
 @Controller('tasks')
 export class TasksController {
@@ -22,11 +24,6 @@ export class TasksController {
   @Post()
   create(@ActiveUserId() userId: string, @Body() createTaskDto: CreateTaskDto) {
     return this.tasksService.create(userId, createTaskDto);
-  }
-
-  @Get()
-  findAll(@ActiveUserId() userId: string) {
-    return this.tasksService.findAllByUserId(userId);
   }
 
   @Put(':taskId')
@@ -45,5 +42,14 @@ export class TasksController {
     @Param('taskId', ParseUUIDPipe) taskId: string,
   ) {
     return this.tasksService.remove(userId, taskId);
+  }
+
+  @Get()
+  findAll(
+    @ActiveUserId() userId: string,
+    @Query('initialDate', OptionalParseDatePipe) initialDate: string,
+    @Query('finalDate', OptionalParseDatePipe) finalDate: string,
+  ) {
+    return this.tasksService.findAll(userId, { initialDate, finalDate });
   }
 }

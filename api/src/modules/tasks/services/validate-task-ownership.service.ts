@@ -10,6 +10,6 @@ export class ValidateTaskOwnershipService {
       where: { id: taskId, userId },
     });
 
-    if (!isOwner) throw new NotFoundException('Task not found.');
+    if (!isOwner) throw new NotFoundException('Tarefa não encontrada.');
   }
 }
