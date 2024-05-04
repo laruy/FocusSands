@@ -1,18 +1,27 @@
 import React, { useState } from 'react';
-import { Link, useRouter } from 'expo-router';
+import { Link } from 'expo-router';
 import ImageComponent from '../../components/LogoComponent';
 import { ContentHeader, ContentFooter, Title } from '../login/styles';
 import { LayoutPageExternal } from '../../components/global/LayoutExternal';
 import { Button, TextInput } from 'react-native-paper';
 import { Form } from '../../components/Form';
 import StyledButton from '../../components/Button';
+import { useSession } from '../../shared/providers/ctx';
 
 export default function Register() {
-  const router = useRouter();
+  const { signUp } = useSession();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+
+  function handleRegister() {
+    signUp({
+      name,
+      email,
+      password,
+    });
+  }
 
   return (
     <LayoutPageExternal>
@@ -29,6 +38,7 @@ export default function Register() {
         />
 
         <TextInput
+          inputMode="email"
           label="E-mail"
           value={email}
           onChangeText={(text) => setEmail(text)}
@@ -36,20 +46,12 @@ export default function Register() {
 
         <TextInput
           label="Senha"
+          secureTextEntry
           value={password}
           onChangeText={(text) => setPassword(text)}
         />
 
-        <TextInput
-          label="Confirmar Senha"
-          value={confirmPassword}
-          onChangeText={(text) => setConfirmPassword(text)}
-        />
-
-        <StyledButton
-          icon="check"
-          onPress={() => router.back()}
-        >
+        <StyledButton icon="check" onPress={handleRegister}>
           Cadastrar
         </StyledButton>
       </Form>

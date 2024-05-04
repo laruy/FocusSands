@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useRouter } from 'expo-router';
 import { Link } from 'expo-router';
 import ImageComponent from '../../components/LogoComponent';
 import { ContentHeader, Title, ContentFooter } from './styles';
@@ -10,15 +9,13 @@ import { Button, TextInput } from 'react-native-paper';
 import StyledButton from '../../components/Button';
 
 export default function Login() {
-  const router = useRouter();
   const { signIn } = useSession();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   function handleLogin() {
-    signIn();
-    router.push({ pathname: '/(tabs)' });
+    signIn({ email, password });
   }
 
   return (
@@ -36,15 +33,13 @@ export default function Login() {
         />
 
         <TextInput
+          secureTextEntry
           label="Senha"
           value={password}
           onChangeText={(text) => setPassword(text)}
         />
 
-        <StyledButton
-          icon="login"
-          onPress={() => handleLogin()}
-        >
+        <StyledButton icon="login" onPress={handleLogin}>
           Entrar
         </StyledButton>
       </Form>
