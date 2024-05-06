@@ -1,8 +1,25 @@
+// Focused.js
+import React from 'react';
 import { Text } from 'react-native';
 import { Container, Wrap, Wrap2 } from './styles';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
-export function Focused() {
+interface Task {
+  id: string;
+  title: string;
+}
+
+interface FocusedProps {
+  taskId: string;
+  tasks: Task[];
+}
+
+export function Focused({ taskId, tasks }: FocusedProps) {
+
+  const task = tasks.find((task) => task.id === taskId);
+
+  if (!task) return null; 
+
   return (
     <Container>
       <Wrap>
@@ -12,7 +29,7 @@ export function Focused() {
       </Wrap>
 
       <Wrap2>
-        <Text style={{ fontSize: 22 }}>Tarefa 2</Text>
+        <Text style={{ fontSize: 22 }}>{task.title}</Text>
         <Text style={{ fontSize: 26 }}>00:00</Text>
       </Wrap2>
     </Container>

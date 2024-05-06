@@ -7,7 +7,7 @@ export default function Tasks() {
     <LayoutPage>
       <ListTasks />
 
-      <Focused />
+      {/* <Focused /> */}
     </LayoutPage>
   );
 }
