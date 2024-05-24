@@ -24,6 +24,10 @@ Aplicativo com funcionalidade de auxiliar na organização de tarefas do dia a d
 
 [LINK DO PROTÓTIPO NO FIGMA](https://www.figma.com/file/hQFLe0ZITPFOKW8XjU687z/FocusSands?type=design&node-id=0%3A1&mode=design&t=YfT7HMi8NDHULfGC-1)
 
+## MODELAGEM DO BANCO DE DADOS - Modelo lógico:
+![MODELAGEM_BANCO_DE_DADOS](https://github.com/laruy/FocusSands/assets/49081359/03c0b58c-2e27-42a8-839a-7b00e9fd6184)
+
+
 ---
 
 ### Utilitários:
