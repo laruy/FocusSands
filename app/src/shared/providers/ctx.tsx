@@ -11,6 +11,11 @@ interface AuthContextInterface {
   signIn: (payload: PayloadSignin) => void;
   signUp: (payload: PayloadSignup) => void;
   signOut: () => void;
+  visibleDialog: (content: {
+    title: string;
+    message: string;
+    icon: string;
+  }) => void;
   session?: string | null;
   isLoading: boolean;
 }
@@ -19,6 +24,7 @@ const AuthContext = React.createContext<AuthContextInterface>({
   signIn: () => null,
   signUp: () => null,
   signOut: () => null,
+  visibleDialog: () => null,
   session: null,
   isLoading: false,
 });
@@ -118,6 +124,9 @@ export function SessionProvider(props: React.PropsWithChildren) {
         },
         signOut: () => {
           setSession(null);
+        },
+        visibleDialog: ({ title, message, icon }) => {
+          visibleDialog({ title, message, icon });
         },
         session,
         isLoading,
