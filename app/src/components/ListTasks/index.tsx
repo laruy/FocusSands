@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, TouchableOpacity } from 'react-native';
+import { FlatList, TouchableOpacity, StyleSheet  } from 'react-native';
 import { Text } from 'react-native-paper';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Focused } from '../Focused';
-import { findAllTasksCurrentDate } from '../../services/TaskService';
+import { deleteTask, findAllTasksCurrentDate } from '../../services/TaskService';
 
 import { Task, Wrap } from './styles';
 import { AxiosErrorException } from '../../shared/interfaces/responses/Global.config';
 import { useSession } from '../../shared/providers/ctx';
 import { msgError } from '../../shared/utils/error';
 import { TaskResponse } from '../../shared/interfaces/responses/Task';
+import { useNavigation } from 'expo-router';
 
 export function ListTasks() {
   const [focusedTaskId, setFocusedTaskId] = useState('');
   const [tasks, setTasks] = useState<TaskResponse[]>([]);
   const { visibleDialog } = useSession();
+  const navigation = useNavigation()
 
   useEffect(() => {
     const findAllTasksCurrentDateFecth = async () =>
@@ -34,15 +36,9 @@ export function ListTasks() {
   }, []);
 
   const handleEditTask = (taskId: string) => {
-    console.log('Edit task with ID:', taskId);
-  };
-
-  const handleDeleteTask = (taskId: string) => {
-    console.log('Delete task with ID:', taskId);
   };
 
   const handleClickTask = (taskId: string) => {
-    console.log('Clicked task with ID:', taskId);
     setFocusedTaskId(taskId);
   };
 
@@ -55,8 +51,11 @@ export function ListTasks() {
           contentContainerStyle={{ gap: 16 }}
           keyExtractor={(task) => task.id}
           renderItem={({ item: task }) => (
-            <Task>
-              <TouchableOpacity onPress={() => handleClickTask(task.id)}>
+            <Task style={{ backgroundColor: task.concluded === 'FINISHED' ? '#D3D3D3' : '#FFF' }}>
+              <TouchableOpacity onPress={() => handleClickTask(task.id)} 
+              
+              disabled={task.concluded === 'FINISHED'}
+              >
                 <Wrap>
                   <FontAwesome
                     size={26}
@@ -76,7 +75,7 @@ export function ListTasks() {
                 <TouchableOpacity onPress={() => handleEditTask(task.id)}>
                   <FontAwesome size={22} name="edit" />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleDeleteTask(task.id)}>
+                <TouchableOpacity onPress={() => deleteTask(task.id)}>
                   <FontAwesome size={22} name="trash" />
                 </TouchableOpacity>
               </Wrap>
