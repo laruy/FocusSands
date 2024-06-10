@@ -13,3 +13,11 @@ export async function findAllTasksCurrentDate(): Promise<
     },
   });
 }
+
+export async function deleteTask(taskId: string): Promise<void> {
+  await api.delete(`/tasks/${taskId}`);
+}
+
+export async function updateTask(taskId: string, data: any): Promise<void> {
+  await api.put(`/tasks/${taskId}`, data);
+}

@@ -29,6 +29,7 @@ export default function Login() {
         <TextInput
           label="E-mail"
           value={email}
+          autoCapitalize='none'
           onChangeText={(text) => setEmail(text)}
         />
 

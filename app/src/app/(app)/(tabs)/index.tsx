@@ -1,21 +1,53 @@
 import { useState } from 'react';
 import { Button, Text, TextInput } from 'react-native-paper';
 import { TextInputMask } from 'react-native-masked-text';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Keyboard, Alert } from 'react-native';
 import { LayoutPage } from '../../../components/global/Layout';
 import { Form } from '../../../components/Form';
 import StyledButton from '../../../components/Button';
+import { saveTask } from '../../../services/AddTaskService';
 
 const Index = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [time, setTime] = useState('');
 
-  const handleSave = () => {
-    // Logic to save data goes here
-    console.log('Title:', title);
-    console.log('Description:', description);
-    console.log('Time:', time);
+  const handleBlur = () => {
+    Keyboard.dismiss();
+  };
+
+  const handleSave = async () => {
+
+    if (!title || title.length < 2) {
+      Alert.alert('Erro', 'O título precisa ter pelo menos 2 caracteres.');
+      return;
+    }
+
+    if (!description || description.length < 5 || description.length > 225) {
+      Alert.alert('Erro', 'A descrição precisa ter entre 5 e 225 caracteres.');
+      return;
+    }
+
+    try {
+      const task = {
+        title,
+        description,
+        timer: time,
+        concluded: 'UNFINISHED',
+      };
+      
+      const savedTask = await saveTask(task);
+
+      Alert.alert('Sucesso', 'Tarefa salva com sucesso!');
+
+      // Limpar os campos após salvar
+      setTitle('');
+      setDescription('');
+      setTime('');
+
+    } catch (error) {
+      console.error('Erro ao salvar a task:', error);
+    }
   };
 
   return (
@@ -25,6 +57,7 @@ const Index = () => {
           label="No que está trabalhando?"
           value={title}
           onChangeText={(text) => setTitle(text)}
+          onBlur={handleBlur}
         />
 
         <TextInput
@@ -32,6 +65,7 @@ const Index = () => {
           value={description}
           multiline
           onChangeText={(text) => setDescription(text)}
+          onBlur={handleBlur}
         />
       </Form>
 
@@ -48,6 +82,7 @@ const Index = () => {
           }}
           value={time}
           onChangeText={(text) => setTime(text)}
+          onBlur={handleBlur}
         />
         <Text variant="labelLarge" style={{ color: '#FFF' }}>
           Minutos
