@@ -1,6 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Put } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { ActiveUserId } from 'src/shared/decorators/ActiveUserId';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Controller('users')
 export class UsersController {
@@ -9,5 +10,10 @@ export class UsersController {
   @Get('/me')
   me(@ActiveUserId() userId: string) {
     return this.usersService.getUserById(userId);
+  }
+
+  @Put()
+  update(@ActiveUserId() userId: string, @Body() updateUserDto: UpdateUserDto) {
+    return this.usersService.updateUserById(userId, updateUserDto);
   }
 }

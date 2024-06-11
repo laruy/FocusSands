@@ -28,8 +28,9 @@ export default function Login() {
       <Form>
         <TextInput
           label="E-mail"
+          inputMode="email"
           value={email}
-          autoCapitalize='none'
+          autoCapitalize="none"
           onChangeText={(text) => setEmail(text)}
         />
 

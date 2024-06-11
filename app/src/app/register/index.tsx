@@ -39,6 +39,7 @@ export default function Register() {
 
         <TextInput
           inputMode="email"
+          autoCapitalize="none"
           label="E-mail"
           value={email}
           onChangeText={(text) => setEmail(text)}
