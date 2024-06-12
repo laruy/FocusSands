@@ -1,11 +1,12 @@
 import { useCallback, useMemo, useState } from 'react';
-import { subDays } from 'date-fns';
+import { subDays, addDays } from 'date-fns';
 import { Calendar } from 'react-native-calendars';
 import { formatDateYYYYmmDD } from '../../shared/utils/date';
 import { CalendarDates } from '../../shared/interfaces/Calendar';
 
 const INITIAL_DATE = formatDateYYYYmmDD(subDays(new Date(), 1));
 const FINAL_DATE = formatDateYYYYmmDD(new Date());
+const MAX_DATE = formatDateYYYYmmDD(addDays(new Date(), 1));
 
 interface CalendarProps {
   onFilter: (dates: CalendarDates) => void;
@@ -61,7 +62,7 @@ export default function CalendarComponent({ onFilter }: CalendarProps) {
       onDayPress={onDayPress}
       markingType="period"
       markedDates={marked}
-      maxDate={INITIAL_DATE}
+      maxDate={MAX_DATE}
     />
   );
 }
