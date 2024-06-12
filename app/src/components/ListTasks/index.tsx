@@ -84,7 +84,7 @@ export function ListTasks() {
         />
       ) : (
         <Text variant="headlineLarge" style={{ color: '#FFF' }}>
-          Nem uma tarefa para hoje
+          Nenhuma tarefa para hoje
         </Text>
       )}
       {focusedTaskId && <Focused taskId={focusedTaskId} tasks={tasks} />}
