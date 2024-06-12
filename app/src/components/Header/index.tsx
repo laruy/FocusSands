@@ -4,8 +4,8 @@ import { Container } from './styles';
 import { BG_DEFAULT } from '../../shared/colors';
 import { Avatar } from 'react-native-paper';
 
-export function Header() {
-  const separarNome = 'João da Silva'.split(' ');
+export function Header({ name }: { name?: string }) {
+  const separarNome = (name || '')?.split(' ') || [];
   const primeiraLetra = separarNome[0].at(0)?.toUpperCase() || '';
   return (
     <SafeAreaView style={{ backgroundColor: BG_DEFAULT }}>

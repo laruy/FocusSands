@@ -14,7 +14,7 @@ export class CreateTaskDto {
   @IsString({ message: 'Título precisa ser uma string.' })
   @MinLength(2, { message: 'Título precisa conter no minímo 2 caracteres.' })
   @MaxLength(60, {
-    message: 'Descrição precisa conter no máximo 60 caracteres.',
+    message: 'Título precisa conter no máximo 60 caracteres.',
   })
   title: string;
 

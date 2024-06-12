@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, TextInput, Card, Text } from 'react-native-paper';
 import { Link } from 'expo-router';
 import { LayoutPage } from '../../../components/global/Layout';
@@ -6,15 +6,58 @@ import { useSession } from '../../../shared/providers/ctx';
 import { Container, ContainerFooter } from './styles';
 import { Form } from '../../../components/Form';
 import StyledButton from '../../../components/Button';
+import { me, update } from '../../../services/UserService';
+import { AxiosErrorException } from '../../../shared/interfaces/responses/Global.config';
+import { msgError } from '../../../shared/utils/error';
 
 export default function Profile() {
   const { signOut } = useSession();
-
+  const { visibleDialog } = useSession();
   const [name, setName] = useState('');
-  const [sex, setSex] = useState('');
+
+  const findMe = async () => {
+    await me()
+      .then(({ data }) => {
+        setName(data.name);
+      })
+      .catch((err: AxiosErrorException) => {
+        const error = msgError(err.response!.data);
+        visibleDialog({
+          title: error.error,
+          message: error.message,
+          icon: 'alert',
+        });
+      });
+  };
+
+  const updateUser = async () => {
+    await update({
+      name,
+    })
+      .then(({ data }) => {
+        setName(data.name);
+        visibleDialog({
+          title: 'Successo!',
+          message: 'Usuário editado com sucesso.',
+          icon: 'check-circle',
+        });
+      })
+      .catch((err: AxiosErrorException) => {
+        const error = msgError(err.response!.data);
+        visibleDialog({
+          title: error.error,
+          message: error.message,
+          icon: 'alert',
+        });
+      });
+  };
+
+  useEffect(() => {
+    findMe();
+  }, []);
 
   function handleEditProfile() {
-    console.log('Editar perfil');
+    updateUser();
   }
 
   function handleLogout() {
@@ -30,16 +73,8 @@ export default function Profile() {
             value={name}
             onChangeText={(text) => setName(text)}
           />
-          <TextInput
-            label="Sexo"
-            value={sex}
-            onChangeText={(text) => setSex(text)}
-          />
 
-          <StyledButton
-            icon="pencil"
-            onPress={() => handleEditProfile()}
-          >
+          <StyledButton icon="pencil" onPress={() => handleEditProfile()}>
             Editar
           </StyledButton>
         </Form>
@@ -80,7 +115,9 @@ export default function Profile() {
 
         <ContainerFooter>
           <Link href="/explication">
-            <Button mode="contained" style={{ backgroundColor: '#014BA0' }}>O que é o FocusSands?</Button>
+            <Button mode="contained" style={{ backgroundColor: '#014BA0' }}>
+              O que é o FocusSands?
+            </Button>
           </Link>
 
           <Button

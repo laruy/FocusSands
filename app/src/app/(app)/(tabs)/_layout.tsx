@@ -13,18 +13,9 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="task"
+        name="[taskId]/index"
         options={{
-          title: 'Tarefas',
-          tabBarIcon: ({ color }) => (
-            <MaterialIcons name="checklist" size={28} color={color} />
-          ),
-        }}
-      />
-
-      <Tabs.Screen
-        name="index"
-        options={{
+          unmountOnBlur: true,
           title: 'Adicionar Tarefa',
           tabBarIcon: ({ color }) => (
             <MaterialIcons
@@ -32,6 +23,16 @@ export default function TabLayout() {
               size={28}
               color={color}
             />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: 'Tarefas',
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons name="checklist" size={28} color={color} />
           ),
         }}
       />

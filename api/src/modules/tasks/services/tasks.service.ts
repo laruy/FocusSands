@@ -1,6 +1,10 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateTaskDto } from '../dto/create-task.dto';
-import { UpdateTaskDto } from '../dto/update-task.dto';
+import { UpdateStatusTaskDto, UpdateTaskDto } from '../dto/update-task.dto';
 import { TasksRepository } from 'src/shared/database/repositories/tasks.repositories';
 import { ValidateTaskOwnershipService } from './validate-task-ownership.service';
 
@@ -50,6 +54,27 @@ export class TasksService {
         title,
         description,
         timer,
+        concluded,
+      },
+    });
+
+    return task;
+  }
+
+  async updateStatus(
+    userId: string,
+    taskId: string,
+    updateTaskDto: UpdateStatusTaskDto,
+  ) {
+    await this.validateTaskOwnershipService.validate(userId, taskId);
+
+    const { concluded } = updateTaskDto;
+    const task = await this.tasksRepo.update({
+      where: {
+        id: taskId,
+      },
+      data: {
+        userId,
         concluded,
       },
     });
@@ -124,7 +149,23 @@ export class TasksService {
           lt: lt_final_date,
         },
       },
+      orderBy: {
+        title: 'asc',
+      },
     });
+  }
+
+  async findTask(userId: string, taskId: string) {
+    const task = await this.tasksRepo.findFirst({
+      where: {
+        userId,
+        id: taskId,
+      },
+    });
+
+    if (!task) throw new NotFoundException('Tarefa não encontrada!.');
+
+    return task;
   }
 
   private formatDateYearMonthDay(date: string): {
