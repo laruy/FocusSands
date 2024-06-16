@@ -90,6 +90,7 @@ const Index = () => {
           setTitle('');
           setDescription('');
           setTime('');
+          router.push({ pathname: '[taskId]/index' });
           router.push({ pathname: '/(tabs)' });
         }
       })

@@ -114,7 +114,7 @@ export default function Profile() {
         </Card>
 
         <ContainerFooter>
-          <Link href="/explication">
+          <Link href="/explanation">
             <Button mode="contained" style={{ backgroundColor: '#014BA0' }}>
               O que é o FocusSands?
             </Button>

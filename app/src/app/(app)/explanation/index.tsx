@@ -2,7 +2,7 @@ import { Text } from 'react-native-paper';
 import { LayoutPage } from '../../../components/global/Layout';
 import { Container } from './styles';
 
-export default function Explication() {
+export default function Explanation() {
   return (
     <LayoutPage>
       <Container>
