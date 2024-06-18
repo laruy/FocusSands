@@ -7,12 +7,18 @@ import { LayoutPageExternal } from '../../components/global/LayoutExternal';
 import { Form } from '../../components/Form';
 import { Button, TextInput } from 'react-native-paper';
 import StyledButton from '../../components/Button';
+import { Keyboard } from 'react-native';
 
 export default function Login() {
   const { signIn } = useSession();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  
+  const handleBlur = () => {
+    Keyboard.dismiss();
+  };
 
   function handleLogin() {
     signIn({ email, password });
@@ -32,6 +38,7 @@ export default function Login() {
           value={email}
           autoCapitalize="none"
           onChangeText={(text) => setEmail(text)}
+          onBlur={handleBlur}
         />
 
         <TextInput
@@ -39,6 +46,7 @@ export default function Login() {
           label="Senha"
           value={password}
           onChangeText={(text) => setPassword(text)}
+          onBlur={handleBlur}
         />
 
         <StyledButton icon="login" onPress={handleLogin}>
