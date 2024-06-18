@@ -87,7 +87,7 @@ export default function Profile() {
                 variant="bodyLarge"
                 style={{ color: '#335882', fontWeight: '600', lineHeight: 26 }}
               >
-                120 minutos
+                53 minutos
               </Text>
             </Text>
 
@@ -97,7 +97,7 @@ export default function Profile() {
                 variant="bodyLarge"
                 style={{ color: '#335882', fontWeight: '600', lineHeight: 26 }}
               >
-                março
+                junho
               </Text>
             </Text>
 
