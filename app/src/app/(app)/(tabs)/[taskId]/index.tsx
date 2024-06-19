@@ -40,13 +40,22 @@ const Index = () => {
           message: error.message,
           icon: 'alert',
         });
+        clearParams();
       });
   }
 
+  const clearParams = () => {
+    router.setParams({ taskId: undefined });
+  };
+
   useEffect(() => {
-    if (taskId) {
+    if (!!taskId?.length && taskId !== undefined && taskId !== 'undefined') {
       findTaskById(taskId as string);
     }
+
+    return () => {
+      clearParams();
+    };
   }, [taskId]);
 
   const handleBlur = () => {
@@ -65,6 +74,7 @@ const Index = () => {
           setTitle('');
           setDescription('');
           setTime('');
+          router.replace({ pathname: '/(tabs)' });
         }
       })
       .catch((err) => {
@@ -124,7 +134,10 @@ const Index = () => {
     }
 
     const task: TaskInterface = {
-      id: taskId || undefined,
+      id:
+        !!taskId?.length && taskId !== undefined && taskId !== 'undefined'
+          ? taskId
+          : undefined,
       title,
       description,
       timer: time || undefined,

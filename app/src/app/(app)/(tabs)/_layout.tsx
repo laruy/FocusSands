@@ -10,6 +10,7 @@ export default function TabLayout() {
         tabBarInactiveTintColor: '#FFFFFF',
         tabBarInactiveBackgroundColor: BG_DEFAULT,
         headerShown: false,
+        unmountOnBlur: true,
       }}
     >
       <Tabs.Screen
@@ -25,6 +26,7 @@ export default function TabLayout() {
             />
           ),
         }}
+        initialParams={{ taskId: undefined }}
       />
 
       <Tabs.Screen
